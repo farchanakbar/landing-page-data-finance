@@ -1,37 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-import {AiOutlineClose, AiOutlineMenu} from "react-icons/ai"
+const Navbar = () => {
+  const [nav, setNav] = useState(false);
 
-function Navbar() {
-  const [menu, setMenu] = useState(false)
+  const handleNav = () => {
+    setNav(!nav);
+  };
 
-  const menuHandler = () => {
-    setMenu(!menu);
-  }
-
-  return <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
-    <h1 className='w-full text-3xl font-bold text-[#00df9a]'>React.</h1>
-    <ul className='hidden md:flex'>
-      <li className='p-4'>Home</li>
-      <li className='p-4'>Company</li>
-      <li className='p-4'>Resources</li>
-      <li className='p-4'>About</li>
-      <li className='p-4'>Contact</li>
-    </ul>
-    <div onClick={menuHandler} className='block md:hidden'>
-      {!menu ? <AiOutlineClose size={23} /> : <AiOutlineMenu size={23} onClick={menuHandler} />}
-    </div>
-    <div className={!menu ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-800 bg-[#1a1d1a] ease-in-out duration-500" : "fixed left-[-100%]"}>
-    <h1 className='w-full text-3xl font-bold m-4 text-[#00df9a]'>React.</h1>
-      <ul className='uppercase p-4'>
-      <li className='p-4 border-b border-gray-600'>Home</li>
-      <li className='p-4 border-b border-gray-600'>Company</li>
-      <li className='p-4 border-b border-gray-600'>Resources</li>
-      <li className='p-4 border-b border-gray-600'>About</li>
-      <li className='p-4'>Contact</li>
+  return (
+    <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
+      <h1 className='w-full text-3xl font-bold text-[#00df9a]'>REACT.</h1>
+      <ul className='hidden md:flex'>
+        <li className='p-4'><a href="/">Home</a></li>
+        <li className='p-4'><a href="/">Company</a></li>
+        <li className='p-4'><a href="/">Resources</a></li>
+        <li className='p-4'><a href="/">About</a></li>
+        <li className='p-4'><a href="/">Contact</a></li>
+      </ul>
+      <div onClick={handleNav} className='block md:hidden cursor-pointer'>
+          {nav ? <AiOutlineClose size={20}/> : <AiOutlineMenu size={20} />}
+      </div>
+      <ul className={nav ? 'fixed md:hidden left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#2b302b] ease-in-out duration-500' : "fixed md:hidden left-[-100%] top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#2b302b] ease-in-out duration-500"}>
+        <h1 className='w-full text-3xl font-bold text-[#00df9a] m-4'>REACT.</h1>
+          <li className='p-4 border-b border-gray-600'><a href="/">Home</a></li>
+          <li className='p-4 border-b border-gray-600'><a href="/">Company</a></li>
+          <li className='p-4 border-b border-gray-600'><a href="/">Resources</a></li>
+          <li className='p-4 border-b border-gray-600'><a href="/">About</a></li>
+          <li className='p-4'><a href="/">Contact</a></li>
       </ul>
     </div>
-  </div>
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
